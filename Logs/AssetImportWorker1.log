@@ -658,3 +658,4 @@ Received Import Request.
 Start importing Assets/SimpleNaturePack/Scenes/SimpleNaturePack_Demo.unity using Guid(5e7af4bd95ac53a4cb784a9eedf8f6f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c805edc14fba5c0757d81ebec74d72a') in 0,065984 seconds
   Import took 0,072786 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
