@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class playerControll : MonoBehaviour
 {
-
 	public float speed = 3.0f;
 	public float horizontalInput;
 	public float verticalInput;
