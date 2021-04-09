@@ -5,45 +5,52 @@ using UnityEngine;
 public class playerControll : MonoBehaviour
 {
 	Animator animator;
-    int runStateHash = Animator.StringToHash("runnung");
+    //int runStateHash = Animator.StringToHash("runnung");
     
-    public float rspeed = 3.0f;
-    public float speed = 1.0f;
-    public float horizontalInput;
-    public float verticalInput;
+    public float rotationSpeed = 3.0f;
+    public float movementSpeed = 1.0f;
 
-    void Movement(){
-    horizontalInput = Input.GetAxis("Horizontal");
-    animator.SetFloat("Strafe", horizontalInput);
+    private void AnimateMove(float horizontalInput, float verticalInput)
+    {
+        animator.SetFloat("Strafe", horizontalInput);
+        animator.SetFloat("Forward", verticalInput);
+        //AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+    }
 
-    verticalInput = Input.GetAxis("Vertical");
-    animator.SetFloat("Forward", verticalInput);
-    
-    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+    private void Move()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-    transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
-    transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
-}
-    void CamFollow(){
+        AnimateMove(horizontalInput, verticalInput);
+
+        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * verticalInput);
+        transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * horizontalInput);
+    }
+
+    private void RotateToCursor()
+    {
         Plane playerPlane = new Plane(Vector3.up, transform.position);
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-        float hitdist = 0.0f;
-        if (playerPlane.Raycast (ray, out hitdist)) {
+
+        if (playerPlane.Raycast(ray, out float hitdist))
+        {
             Vector3 targetPoint = ray.GetPoint(hitdist);
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rspeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,
+                    rotationSpeed * Time.deltaTime);
         }
     }
 
-    // Start is called before the first frame update
-    void Start() {
+    void Start() 
+    {
         animator = GetComponent<Animator>();
     }
 
-// Update is called once per frame
-void Update() {
-    Movement();
-    CamFollow();
+    void Update() 
+    {
+        Move();
+        RotateToCursor();
     }
 }
 

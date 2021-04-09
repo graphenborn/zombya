@@ -12,6 +12,8 @@ public class cameraController : MonoBehaviour
     public float minDist = 1f;
 
     private float dist = 1f;
+
+    // Перевести в радианы потом
     private Vector2 sphericalPosition = new Vector2(180f, 50f);
 
     private bool freeMovement = false;
@@ -26,7 +28,7 @@ public class cameraController : MonoBehaviour
         }
         else
         {
-            sphericalPosition.x = 180f;
+            sphericalPosition.x = focus.rotation.y * 2f * Mathf.Rad2Deg;
         }
 
         ZoomCamera();
