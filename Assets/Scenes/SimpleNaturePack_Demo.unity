@@ -1013,6 +1013,11 @@ MonoBehaviour:
   speed: 1
   horizontalInput: 0
   verticalInput: 0
+--- !u!4 &217932249 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7f20eb710d4074ffd8fca45ea404eb28, type: 3}
+  m_PrefabInstance: {fileID: 75306693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &260161009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3494,7 +3499,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bbc6902e614507b8890ab8a8faf326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 217932244}
+  focus: {fileID: 217932249}
+  mouseSensivity: 3
+  maxThteta: 65
+  minThteta: 20
+  maxDist: 4
+  minDist: 1
+  dist: 1.53
+  sphericalPosition: {x: 0, y: 45}
 --- !u!1001 &1223250803
 PrefabInstance:
   m_ObjectHideFlags: 0
