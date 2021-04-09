@@ -11,29 +11,47 @@ public class cameraController : MonoBehaviour
     public float maxDist = 4f;
     public float minDist = 1f;
 
-    //Залочить в приват потом
-    public float dist = 2f;
-    public Vector2 sphericalPosition = new Vector2(0f, 90f);
+    private float dist = 1f;
+    private Vector2 sphericalPosition = new Vector2(180f, 50f);
+
+    private bool freeMovement = false;
 
     private void Update()
     {
-        if (RotateCamera())
+        freeMovement = getFreeMovement();
+
+        if (freeMovement)
         {
-            float dAlpha = mouseSensivity * Input.GetAxis("Mouse X");
-            float dTheta = mouseSensivity * Input.GetAxis("Mouse Y");
-
-            sphericalPosition += new Vector2(dAlpha, dTheta);
-            if (Mathf.Abs(sphericalPosition.x) >= 360f)
-                sphericalPosition.x += Mathf.Sign(sphericalPosition.x) * -360f;
-
-            sphericalPosition.y = Mathf.Clamp(sphericalPosition.y, minThteta, maxThteta);
+            ChangeCameraSphericalCords();
+        }
+        else
+        {
+            sphericalPosition.x = 180f;
         }
 
-        dist -= Input.GetAxis("Mouse ScrollWheel");
-        dist = Mathf.Clamp(dist, minDist, maxDist);
+        ZoomCamera();
 
         MoveCameraToSphericalCord();
         transform.LookAt(focus);
+    }
+
+    private void ChangeCameraSphericalCords ()
+    {
+
+        float dAlpha = mouseSensivity * Input.GetAxis("Mouse X");
+        float dTheta = mouseSensivity * Input.GetAxis("Mouse Y");
+
+        sphericalPosition += new Vector2(dAlpha, dTheta);
+        if (Mathf.Abs(sphericalPosition.x) >= 360f)
+            sphericalPosition.x += Mathf.Sign(sphericalPosition.x) * -360f;
+
+        sphericalPosition.y = Mathf.Clamp(sphericalPosition.y, minThteta, maxThteta);
+    }
+
+    private void ZoomCamera ()
+    {
+        dist -= Input.GetAxis("Mouse ScrollWheel");
+        dist = Mathf.Clamp(dist, minDist, maxDist);
     }
 
     private void MoveCameraToSphericalCord()
@@ -48,11 +66,9 @@ public class cameraController : MonoBehaviour
         transform.position = focus.position + new Vector3(x, y, z);
     }
 
-    private bool RotateCamera()
+    private bool getFreeMovement()
     {
-        if (Input.GetMouseButton(1) && Input.GetButton("Camera Movement"))
-            return true;
-        return false;
+        return Input.GetMouseButton(1) && Input.GetButton("Camera Movement");
     }
 
 }
