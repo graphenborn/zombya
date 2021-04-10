@@ -5,27 +5,35 @@ using UnityEngine;
 public class playerControll : MonoBehaviour
 {
 	Animator animator;
-    //int runStateHash = Animator.StringToHash("runnung");
     
     public float rotationSpeed = 3.0f;
     public float movementSpeed = 1.0f;
+    private float horizontalInput;
+    private float verticalInput;
 
     private void AnimateMove(float horizontalInput, float verticalInput)
     {
-        animator.SetFloat("Strafe", horizontalInput);
-        animator.SetFloat("Forward", verticalInput);
-        //AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if(horizontalInput != 0 || verticalInput != 0){
+            animator.SetFloat("Strafe", 1);
+            animator.SetFloat("Forward", 1);
+        }
+        else{
+            animator.SetFloat("Strafe", 0);
+            animator.SetFloat("Forward", 0);
+        }
+        
     }
 
     private void Move()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
 
         AnimateMove(horizontalInput, verticalInput);
 
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * verticalInput);
         transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * horizontalInput);
+
     }
 
     private void RotateToCursor()
