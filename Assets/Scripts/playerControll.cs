@@ -8,8 +8,6 @@ public class playerControll : MonoBehaviour
     
     public float rotationSpeed = 3.0f;
     public float movementSpeed = 1.0f;
-    private float horizontalInput;
-    private float verticalInput;
 
     private void AnimateMove(float horizontalInput, float verticalInput)
     {
@@ -26,8 +24,8 @@ public class playerControll : MonoBehaviour
 
     private void Move()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
         AnimateMove(horizontalInput, verticalInput);
 
