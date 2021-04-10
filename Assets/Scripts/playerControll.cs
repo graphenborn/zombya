@@ -5,7 +5,6 @@ using UnityEngine;
 public class playerControll : MonoBehaviour
 {
 	Animator animator;
-    //int runStateHash = Animator.StringToHash("runnung");
     
     public float rotationSpeed = 3.0f;
     public float movementSpeed = 1.0f;
@@ -23,7 +22,6 @@ public class playerControll : MonoBehaviour
             animator.SetFloat("Forward", 0);
         }
         
-        //AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
     }
 
     private void Move()
