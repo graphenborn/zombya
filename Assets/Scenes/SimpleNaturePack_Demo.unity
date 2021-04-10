@@ -1010,10 +1010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8191ccc26466f3fdca482561d8ce5cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rspeed: 3
-  speed: 1
-  horizontalInput: 0
-  verticalInput: 0
+  rotationSpeed: 3
+  movementSpeed: 1
 --- !u!4 &217932249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7f20eb710d4074ffd8fca45ea404eb28, type: 3}
@@ -3497,13 +3495,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1136385240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5bbc6902e614507b8890ab8a8faf326, type: 3}
+  m_Script: {fileID: 11500000, guid: fadb3212bcd4259459625e68ef15553b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   focus: {fileID: 217932249}
-  mouseSensivity: 3
-  maxThteta: 65
-  minThteta: 20
+  azimuthAngle: 20
+  planeAngle: 180
   maxDist: 4
   minDist: 1
 --- !u!1001 &1223250803
