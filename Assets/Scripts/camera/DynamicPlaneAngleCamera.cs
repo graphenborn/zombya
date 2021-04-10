@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class cameraController : MonoBehaviour
+public class DynamicPlaneAngleCamera : MonoBehaviour
 {
     public Transform focus;
     public float mouseSensivity = 3.0f;
