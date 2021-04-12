@@ -11,17 +11,7 @@ public class playerControll : MonoBehaviour
 
     private void AnimateMove(float horizontalInput, float verticalInput)
     {
-        if(horizontalInput != 0 || verticalInput != 0)
-        {
-            animator.SetFloat("Strafe", 1);
-            animator.SetFloat("Forward", 1);
-        }
-        else
-        {
-            animator.SetFloat("Strafe", 0);
-            animator.SetFloat("Forward", 0);
-        }
-        
+        animator.SetBool("Running", horizontalInput != 0 || verticalInput != 0);
     }
 
     private void Move()
