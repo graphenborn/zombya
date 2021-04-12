@@ -3500,7 +3500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focus: {fileID: 217932249}
   azimuthAngle: 20
-  planeAngle: 0
+  planeAngle: 180
   maxDist: 4
   minDist: 1
 --- !u!1001 &1223250803
