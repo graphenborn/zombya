@@ -11,11 +11,13 @@ public class playerControll : MonoBehaviour
 
     private void AnimateMove(float horizontalInput, float verticalInput)
     {
-        if(horizontalInput != 0 || verticalInput != 0){
+        if(horizontalInput != 0 || verticalInput != 0)
+        {
             animator.SetFloat("Strafe", 1);
             animator.SetFloat("Forward", 1);
         }
-        else{
+        else
+        {
             animator.SetFloat("Strafe", 0);
             animator.SetFloat("Forward", 0);
         }
@@ -29,9 +31,13 @@ public class playerControll : MonoBehaviour
 
         AnimateMove(horizontalInput, verticalInput);
 
-        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * verticalInput);
-        transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * horizontalInput);
+        float deltaS = Time.deltaTime * movementSpeed;
 
+        transform.Translate(
+            deltaS * horizontalInput, 
+            0, 
+            deltaS * verticalInput, 
+            Camera.main.transform);
     }
 
     private void RotateToCursor()
