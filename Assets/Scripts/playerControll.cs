@@ -24,7 +24,7 @@ public class playerControll : MonoBehaviour
         float dS = Time.deltaTime * movementSpeed;
         Vector3 dV = new Vector3(dS * horizontalInput, 0, dS * verticalInput);
 
-        transform.Translate(dV, Camera.main.transform);
+        transform.Translate(dV, Space.World);
     }
 
     private void RotateToCursor()
